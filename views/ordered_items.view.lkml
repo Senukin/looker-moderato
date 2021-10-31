@@ -151,4 +151,34 @@ view: ordered_items {
     type: sum
     sql: ${price} * ${quantity} ;;
   }
+
+  measure: revenue_with_tax {
+    label: "販売金額(税込)"
+    type: sum
+    sql: ${price_with_tax} * ${quantity} ;;
+  }
+
+  measure: sum_tax {
+    label: "消費税"
+    type: sum
+    sql: ${tax} ;;
+  }
+
+  measure: sum_refund_amount {
+    label: "返金額(税抜)"
+    type: sum
+    sql: ${TABLE}.refunded_price ;;
+  }
+
+  measure: sum_refund_amount_with_tax {
+    label: "返金額(税込)"
+    type: sum
+    sql: ${TABLE}.refund_amount_with_tax ;;
+  }
+
+  measure: sum_quantity {
+    label: "販売数量"
+    type: sum
+    sql: ${quantity} ;;
+  }
 }
