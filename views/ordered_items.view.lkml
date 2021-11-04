@@ -110,6 +110,27 @@ view: ordered_items {
     sql: ${TABLE}.refunded_quantity ;;
   }
 
+  dimension_group: fulfillmented {
+    label: "配送日時"
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    sql: ${TABLE}.fulfillmented_at ;;
+  }
+
+  dimension: fulfillment_status {
+    label: "配送ステータス"
+    type: string
+    sql: ${TABLE}.fulfillment_status ;;
+  }
+
   dimension: sku {
     label: "SKU"
     type: string
@@ -140,10 +161,48 @@ view: ordered_items {
     sql: ${TABLE}.vendor ;;
   }
 
+  dimension: utm_source {
+    type: string
+    sql: ${TABLE}.utm_source ;;
+  }
+
+  dimension: utm_medium {
+    type: string
+    sql: ${TABLE}.utm_medium ;;
+  }
+
+  dimension: utm_content {
+    type: string
+    sql: ${TABLE}.utm_content ;;
+  }
+
+  dimension: utm_campaign {
+    type: string
+    sql: ${TABLE}.utm_campaign ;;
+  }
+
+  dimension: customer_orders_count {
+    label: "累積注文回数"
+    type: number
+    sql: ${TABLE}.customer_orders_count ;;
+  }
+
   measure: count {
     label: "行数"
     type: count
     drill_fields: []
+  }
+
+  measure: order_count {
+    label: "注文件数"
+    type: count_distinct
+    sql: ${order_id} ;;
+  }
+
+  measure: customer_count {
+    label: "顧客数"
+    type: count_distinct
+    sql: ${customer_id};;
   }
 
   measure: revenue {
