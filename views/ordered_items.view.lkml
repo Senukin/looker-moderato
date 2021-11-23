@@ -247,4 +247,11 @@ view: ordered_items {
     sql: ${revenue} / ${order_count} ;;
     value_format: "#,##0"
   }
+
+  measure: avg_order_quantity {
+    label: "平均購入点数"
+    type: average
+    sql: ${TABLE}.quantity ;;
+    value_format: "#,##0.0"
+  }
 }
