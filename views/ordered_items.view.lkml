@@ -245,5 +245,6 @@ view: ordered_items {
     label: "注文単価"
     type: number
     sql: ${revenue} / ${order_count} ;;
+    value_format: "#,##0"
   }
 }
