@@ -240,4 +240,10 @@ view: ordered_items {
     type: sum
     sql: ${quantity} ;;
   }
+
+  measure: avg_order_revenue {
+    label: "注文単価"
+    type: number
+    sql: ${revenue} / ${order_count} ;;
+  }
 }
