@@ -249,9 +249,9 @@ view: ordered_items {
   }
 
   measure: avg_order_quantity {
-    label: "平均購入数量"
+    label: "平均購入点数"
     type: average
     sql: ${TABLE}.quantity ;;
-    value_format: "#,##0.0"
+    value_format: "#,##0.00"
   }
 }
