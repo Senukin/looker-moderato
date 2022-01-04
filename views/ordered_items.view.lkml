@@ -110,7 +110,7 @@ view: ordered_items {
     sql: ${TABLE}.refunded_quantity ;;
   }
 
-  dimension_group: fulfillmented {
+  dimension_group: fulfilled {
     label: "配送日時"
     type: time
     timeframes: [
@@ -122,13 +122,13 @@ view: ordered_items {
       quarter,
       year
     ]
-    sql: ${TABLE}.fulfillmented_at ;;
+    sql: ${TABLE}.fulfilled_at ;;
   }
 
-  dimension: fulfillment_status {
+  dimension: fulfilled_status {
     label: "配送ステータス"
     type: string
-    sql: ${TABLE}.fulfillment_status ;;
+    sql: ${TABLE}.fulfilled_status ;;
   }
 
   dimension: sku {
@@ -184,6 +184,14 @@ view: ordered_items {
   dimension: customer_orders_count {
     label: "累積注文回数"
     type: number
+    sql: ${TABLE}.customer_orders_count ;;
+  }
+
+  dimension: customer_orders_count_range {
+    label: "累積注文回数グループ"
+    type: tier
+    tiers: [0,1,2,3,4,5]
+    style: integer
     sql: ${TABLE}.customer_orders_count ;;
   }
 
