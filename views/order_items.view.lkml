@@ -228,7 +228,7 @@ view: order_items {
   measure: sum_tax {
     label: "消費税"
     type: sum
-    sql: ${tax} ;;
+    sql: ${tax} * ${quantity} ;;
   }
 
   measure: sum_refund_amount {
