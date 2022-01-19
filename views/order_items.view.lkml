@@ -1,5 +1,5 @@
-view: ordered_items {
-  sql_table_name: `cloudfit-saas-prd.moderato.ordered_items`
+view: order_items {
+  sql_table_name: `cloudfit-saas-prd.moderato.order_items`
     ;;
 
   dimension: customer_id {
