@@ -262,4 +262,16 @@ view: order_items {
     sql: ${TABLE}.quantity ;;
     value_format: "#,##0.00"
   }
+
+  measure: product_type {
+    label: "商品カテゴリ"
+    type: string
+    sql: ${TABLE}.product_type ;;
+  }
+
+  measure: customer_category {
+    label: "顧客カテゴリ"
+    type: string
+    sql: ${TABLE}.customer_category ;;
+  }
 }
