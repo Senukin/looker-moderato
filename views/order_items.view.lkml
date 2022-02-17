@@ -221,7 +221,7 @@ view: order_items {
 
   measure: revenue_with_tax {
     label: "販売金額(税込)"
-    type: sum
+    type: number
     sql: ${price_with_tax} * ${quantity} ;;
   }
 
