@@ -3,7 +3,7 @@ view: inventory_summaries {
 sql_table_name: `cloudfit-saas-prd.moderato.inventory_summaries`
       ;;
 
-  dimension_group: created_at {
+  dimension_group: updated_at {
     label: "日付"
     type: time
     timeframes: [
@@ -15,7 +15,7 @@ sql_table_name: `cloudfit-saas-prd.moderato.inventory_summaries`
       quarter,
       year
       ]
-    sql: ${TABLE}.created_at ;;
+    sql: ${TABLE}.updated_at ;;
     }
 
   dimension: sku {
