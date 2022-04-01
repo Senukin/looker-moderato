@@ -9,3 +9,9 @@ explore: order_items {
 explore: inventory_summaries {
   label: "在庫"
 }
+
+
+explore: report_summary
+{
+  label: "在庫サマリー"
+}
