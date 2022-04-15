@@ -15,3 +15,9 @@ explore: report_summary
 {
   label: "在庫サマリー"
 }
+
+
+explore: order_items_summary_in_specific_duration_with_availables
+{
+  label: "order_items_summary_in_specific_duration_with_availables"
+}
