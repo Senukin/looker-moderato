@@ -17,6 +17,12 @@ view: report_summary {
     sql: ${TABLE}._week ;;
   }
 
+  dimension: _week_str {
+    label: "開始日"
+    type: string
+    sql: FORMAT_DATE("%x",  ${TABLE}._week) ;;
+  }
+
   dimension: article_name {
     type: string
     sql: ${TABLE}.article_name ;;
