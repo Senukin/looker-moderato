@@ -27,31 +27,31 @@ view: report_summary_group_by_categories {
     sql: FORMAT_DATE("%x",  ${TABLE}._week) ;;
   }
   measure: total_sales {
-    type: number
+    type: sum
     sql: ${TABLE}.total_sales ;;
   }
   measure: total_quantity {
-    type: number
+    type: sum
     sql: ${TABLE}.total_quantity ;;
   }
   measure: quantity_per_day {
-    type: number
+    type: sum
     sql: ${TABLE}.quantity_per_day ;;
   }
   measure: predict_quantity_per_month {
-    type: number
+    type: sum
     sql: ${TABLE}.predict_quantity_per_month ;;
   }
   measure: expected_remain_week_number {
-    type: number
+    type: sum
     sql: ${TABLE}.expected_remain_week_number ;;
   }
   measure: inventory_turnover {
-    type: number
+    type: sum
     sql: ${TABLE}.inventory_turnover ;;
   }
   measure: latest_available {
-    type: number
+    type: sum
     sql: ${TABLE}.latest_available ;;
   }
 }
