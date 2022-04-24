@@ -24,21 +24,9 @@ sql_table_name: `cloudfit-saas-prd.moderato.inventory_summaries`
     sql: ${TABLE}.sku ;;
   }
 
-  measure: available {
-    label: "在庫数"
-    type: sum
-    sql: ${TABLE}.available ;;
-  }
-
   dimension: layer {
     type: string
     sql: ${TABLE}.layer ;;
-  }
-
-  measure: received {
-    label: "入庫待ち"
-    type: sum
-    sql: ${TABLE}.received ;;
   }
 
   dimension: title {
@@ -73,6 +61,24 @@ sql_table_name: `cloudfit-saas-prd.moderato.inventory_summaries`
   dimension: image_id {
     type: string
     sql: ${TABLE}.image_id ;;
+  }
+
+  measure: available {
+    label: "在庫数"
+    type: sum
+    sql: ${TABLE}.available ;;
+  }
+
+  measure: received {
+    label: "入庫待ち"
+    type: sum
+    sql: ${TABLE}.received ;;
+  }
+
+  measure: in_transit {
+    label: "入荷待ち"
+    type: sum
+    sql: ${TABLE}.in_transit ;;
   }
 
 }
