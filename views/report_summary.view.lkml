@@ -60,7 +60,7 @@ view: report_summary {
   }
 
   dimension: predict_quantity_per_month {
-    label: "現在庫"
+    label: "1ヶ月当たりの見込み数量"
     type: number
     sql: ${TABLE}.predict_quantity_per_month ;;
   }
