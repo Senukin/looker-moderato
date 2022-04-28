@@ -53,6 +53,12 @@ view: report_summary {
     sql: ${TABLE}.inventory_turnover ;;
   }
 
+  measure: price {
+    label: "価格"
+    type: number
+    sql: ${TABLE}.price ;;
+  }
+
   dimension: latest_available {
     label: "現在庫"
     type: number
