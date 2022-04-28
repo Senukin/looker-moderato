@@ -55,7 +55,7 @@ view: report_summary {
 
   measure: price {
     label: "価格"
-    type: number
+    type: average
     sql: ${TABLE}.price ;;
   }
 
