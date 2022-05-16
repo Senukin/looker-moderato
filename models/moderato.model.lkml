@@ -26,3 +26,7 @@ explore: order_items_summary_in_specific_duration_with_availables
 {
   label: "order_items_summary_in_specific_duration_with_availables"
 }
+
+explore: daily_inventory_summaries {
+  label: "日次在庫"
+}
