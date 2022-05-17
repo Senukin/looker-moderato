@@ -115,19 +115,19 @@ view: daily_inventory_summaries {
 
   measure: m_available {
     label: "在庫数"
-    type: average
+    type: sum
     sql: ${TABLE}.available ;;
   }
 
   measure: m_blocked {
     label: "保留数"
-    type: average
+    type: sum
     sql: ${TABLE}.blocked ;;
   }
 
   measure: m_received {
     label: "入庫待ち数"
-    type: average
+    type: sum
     sql: ${TABLE}.received ;;
   }
 }
