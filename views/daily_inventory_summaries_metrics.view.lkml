@@ -1,10 +1,9 @@
-view: daily_inventory_summaries {
-  sql_table_name: `cloudfit-saas-prd.moderato.daily_inventory_summaries`
+view: daily_inventory_summaries_metrics {
+  sql_table_name: `cloudfit-saas-prd.moderato.daily_inventory_summaries_metrics`
     ;;
   drill_fields: [id]
 
   dimension: id {
-    label: "ID"
     primary_key: yes
     type: string
     sql: ${TABLE}.id ;;
@@ -16,13 +15,19 @@ view: daily_inventory_summaries {
     sql: ${TABLE}.available ;;
   }
 
+  dimension: avg7_available {
+    label: "過去7日平均在庫数"
+    type: number
+    sql: ${TABLE}.avg7_available ;;
+  }
+
   dimension: blocked {
     label: "保留数"
     type: number
     sql: ${TABLE}.blocked ;;
   }
 
-  dimension_group: created_at {
+  dimension_group: created {
     label: "作成日時"
     type: time
     timeframes: [
@@ -34,7 +39,14 @@ view: daily_inventory_summaries {
       quarter,
       year
     ]
+    datatype: datetime
     sql: ${TABLE}.created_at ;;
+  }
+
+  dimension: daily_avg_out_available {
+    label: "日次平均出庫数"
+    type: number
+    sql: ${TABLE}.daily_avg_out_available ;;
   }
 
   dimension_group: date {
@@ -53,13 +65,25 @@ view: daily_inventory_summaries {
     sql: ${TABLE}.date ;;
   }
 
+  dimension: exp_day_of_sortage {
+    label: "残見込日数"
+    type: number
+    sql: ${TABLE}.exp_day_of_sortage ;;
+  }
+
   dimension: identification_code {
     type: string
     sql: ${TABLE}.identification_code ;;
   }
 
+  dimension: lag7_available {
+    label: "7日前在庫数"
+    type: number
+    sql: ${TABLE}.lag7_available ;;
+  }
+
   dimension: model_number {
-    label: "型番"
+    label: "品番"
     type: string
     sql: ${TABLE}.model_number ;;
   }
@@ -71,7 +95,7 @@ view: daily_inventory_summaries {
   }
 
   dimension: name {
-    label: "商品"
+    label: "商品名"
     type: string
     sql: ${TABLE}.name ;;
   }
@@ -81,8 +105,14 @@ view: daily_inventory_summaries {
     sql: ${TABLE}.object_code ;;
   }
 
+  dimension: out7_available {
+    label: "過去7日出庫数"
+    type: number
+    sql: ${TABLE}.out7_available ;;
+  }
+
   dimension: received {
-    label: "入荷待ち数"
+    label: "受入数"
     type: number
     sql: ${TABLE}.received ;;
   }
@@ -93,7 +123,7 @@ view: daily_inventory_summaries {
     sql: ${TABLE}.sku_code ;;
   }
 
-  dimension_group: updated_at {
+  dimension_group: updated {
     label: "更新日時"
     type: time
     timeframes: [
@@ -105,14 +135,20 @@ view: daily_inventory_summaries {
       quarter,
       year
     ]
+    datatype: datetime
     sql: ${TABLE}.updated_at ;;
- }
+  }
+
+  dimension: weekly_inventory_turnover {
+    label: "在庫回転率（過去7日間）"
+    type: number
+    sql: ${TABLE}.weekly_inventory_turnover ;;
+  }
 
   measure: count {
     type: count
     drill_fields: [id, name]
   }
-
   measure: m_available {
     label: "在庫数"
     type: average
