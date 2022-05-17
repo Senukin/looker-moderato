@@ -30,3 +30,7 @@ explore: order_items_summary_in_specific_duration_with_availables
 explore: daily_inventory_summaries {
   label: "日次在庫"
 }
+
+explore: daily_inventory_summaries_metrics {
+  label: "日次在庫指標"
+}
