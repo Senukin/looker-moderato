@@ -47,9 +47,9 @@ view: report_summary {
     sql: ${TABLE}.identification_code ;;
   }
 
-  dimension: inventory_turnover {
+  measure: inventory_turnover {
     label: "在庫回転率"
-    type: number
+    type: average
     sql: ${TABLE}.inventory_turnover ;;
   }
 
@@ -59,21 +59,21 @@ view: report_summary {
     sql: ${TABLE}.price ;;
   }
 
-  dimension: latest_available {
+  measure: latest_available {
     label: "現在庫"
-    type: number
+    type: sum
     sql: ${TABLE}.latest_available ;;
   }
 
-  dimension: predict_quantity_per_month {
+  measure: predict_quantity_per_month {
     label: "1ヶ月当たりの見込み数量"
-    type: number
+    type: sum
     sql: ${TABLE}.predict_quantity_per_month ;;
   }
 
-  dimension: predict_sales_per_month {
+  measure: predict_sales_per_month {
     label: "一ヶ月当たりの見込み売上"
-    type: number
+    type: sum
     sql: ${TABLE}.predict_sales_per_month ;;
   }
 
@@ -83,9 +83,15 @@ view: report_summary {
     sql: ${TABLE}.product_type ;;
   }
 
-  dimension: quantity_per_day {
+  dimension: model_number {
+    label: "型番"
+    type: string
+    sql: ${TABLE}.model_number ;;
+  }
+
+  measure: quantity_per_day {
     label: "一日当たり販売数"
-    type: number
+    type: sum
     sql: ${TABLE}.quantity_per_day ;;
   }
 
@@ -110,15 +116,15 @@ view: report_summary {
     sql: ${TABLE}.scheduled_qnantity ;;
   }
 
-  dimension: total_quantity {
+  measure: total_quantity {
     label: "販売数"
-    type: number
+    type: sum
     sql: ${TABLE}.total_quantity ;;
   }
 
-  dimension: total_sales {
+  measure: total_sales {
     label: "売上"
-    type: number
+    type: sum
     sql: ${TABLE}.total_sales ;;
   }
 
