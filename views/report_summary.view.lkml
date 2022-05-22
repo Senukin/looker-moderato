@@ -128,6 +128,12 @@ view: report_summary {
     sql: ${TABLE}.total_sales ;;
   }
 
+  measure: budget {
+    label: "予算"
+    type: average
+    sql: ${TABLE}.budget_value ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [article_name]
