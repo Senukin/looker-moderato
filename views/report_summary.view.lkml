@@ -136,8 +136,8 @@ view: report_summary {
 
   measure: expected_landing_percent {
     label: "着地見込み率"
-    type: number
-    sql: ${predict_sales_per_month} / ${budget} ;;
+    type: sum
+    sql: ${TABLE}.expected_landing_percent ;;
   }
 
   measure: count {
