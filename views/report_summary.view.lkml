@@ -140,6 +140,13 @@ view: report_summary {
     sql: ${TABLE}.expected_landing_percent ;;
   }
 
+  measure: compared_to_the_previous_week {
+    label: "対先週伸び"
+    type: average
+    sql: ${TABLE}.compared_to_the_previous_week ;;
+  }
+
+
   measure: count {
     type: count
     drill_fields: [article_name]
