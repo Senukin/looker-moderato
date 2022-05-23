@@ -50,6 +50,7 @@ view: report_summary {
   measure: inventory_turnover {
     label: "在庫回転率"
     type: average
+    value_format: "0.00"
     sql: ${TABLE}.inventory_turnover ;;
   }
 
@@ -137,11 +138,13 @@ view: report_summary {
   measure: expected_landing_percent {
     label: "着地見込み率"
     type: sum
+    value_format: "0.00"
     sql: ${TABLE}.expected_landing_percent ;;
   }
 
   measure: compared_to_the_previous_week {
     label: "対先週伸び"
+    value_format: "0.00"
     type: average
     sql: ${TABLE}.compared_to_the_previous_week ;;
   }
