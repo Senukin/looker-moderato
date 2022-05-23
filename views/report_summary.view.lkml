@@ -124,6 +124,12 @@ view: report_summary {
     sql: ${TABLE}.total_quantity ;;
   }
 
+  measure: before_week_total_quantity {
+    label: "前週販売数"
+    type: sum
+    sql: ${TABLE}.before_week_total_quantity ;;
+  }
+
   measure: total_sales {
     label: "売上"
     type: sum
