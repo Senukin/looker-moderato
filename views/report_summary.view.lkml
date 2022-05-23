@@ -92,6 +92,7 @@ view: report_summary {
 
   measure: quantity_per_day {
     label: "一日当たり販売数"
+    value_format: "0.00"
     type: sum
     sql: ${TABLE}.quantity_per_day ;;
   }
