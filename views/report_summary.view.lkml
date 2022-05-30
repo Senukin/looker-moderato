@@ -29,11 +29,7 @@ view: report_summary {
     sql: ${TABLE}.article_name ;;
   }
 
-  dimension: code {
-    label: "商品コード"
-    type: string
-    sql: ${TABLE}.code ;;
-  }
+
 
   dimension: expected_remain_week_number {
     label: "残見込み週数"
@@ -97,25 +93,31 @@ view: report_summary {
     sql: ${TABLE}.quantity_per_day ;;
   }
 
-  dimension_group: scheduled {
-    label: "入荷予定日"
-    type: time
-    timeframes: [
-      raw,
-      time,
-      date,
-      week,
-      month,
-      quarter,
-      year
-    ]
-    sql: ${TABLE}.scheduled_date ;;
-  }
+  # dimension_group: scheduled {
+  #   label: "入荷予定日"
+  #   type: time
+  #   timeframes: [
+  #     raw,
+  #     time,
+  #     date,
+  #     week,
+  #     month,
+  #     quarter,
+  #     year
+  #   ]
+  #   sql: ${TABLE}.scheduled_date ;;
+  # }
 
-  dimension: scheduled_qnantity {
+  measure: scheduled {
+      label: "入荷予定日"
+      type: string
+      sql: ${TABLE}.scheduled_date ;;
+    }
+
+  measure: scheduled_qnantity {
     label: "入荷予定数"
-    type: number
-    sql: ${TABLE}.scheduled_qnantity ;;
+    type: sum
+    sql: cloudfit-saas-prd.dataform.report_summary.scheduled_qnantity ;;
   }
 
   measure: total_quantity {
