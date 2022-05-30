@@ -116,8 +116,8 @@ view: report_summary {
 
   measure: scheduled {
       label: "入荷予定日"
-      type: string
-      sql: STRING_AGG(DISTINCT ${TABLE}.scheduled_date) ;;
+      type: date
+      sql: min(${TABLE}.scheduled_date) ;;
     }
 
   measure: scheduled_qnantity {
