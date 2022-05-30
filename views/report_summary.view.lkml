@@ -117,12 +117,12 @@ view: report_summary {
   measure: scheduled {
       label: "入荷予定日"
       type: string
-      sql: ${TABLE}.scheduled_date ;;
+      sql: STRING_AGG(DISTINCT ${TABLE}.scheduled_date) ;;
     }
 
   measure: scheduled_qnantity {
     label: "入荷予定数"
-    type: sum
+    type: average
     sql: cloudfit-saas-prd.dataform.report_summary.scheduled_qnantity ;;
   }
 
