@@ -37,9 +37,9 @@ view: report_summary {
 
 
 
-  dimension: expected_remain_week_number {
+  measure: expected_remain_week_number {
     label: "残見込み週数"
-    type: number
+    type: average
     sql: ${TABLE}.expected_remain_week_number ;;
   }
 
