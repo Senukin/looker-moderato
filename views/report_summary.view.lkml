@@ -29,6 +29,12 @@ view: report_summary {
     sql: ${TABLE}.article_name ;;
   }
 
+  dimension: code {
+    label: "商品コード"
+    type: string
+    sql: ${TABLE}.code ;;
+  }
+
 
 
   dimension: expected_remain_week_number {
