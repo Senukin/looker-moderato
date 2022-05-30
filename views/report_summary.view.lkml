@@ -123,7 +123,7 @@ view: report_summary {
   measure: scheduled_qnantity {
     label: "入荷予定数"
     type: average
-    sql: cloudfit-saas-prd.dataform.report_summary.scheduled_qnantity ;;
+    sql: report_summary.scheduled_qnantity ;;
   }
 
   measure: total_quantity {
