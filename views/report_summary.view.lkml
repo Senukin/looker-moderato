@@ -120,10 +120,10 @@ view: report_summary {
       sql: min(${TABLE}.scheduled_date) ;;
     }
 
-  measure: scheduled_qnantity {
+  measure: scheduled_quantity {
     label: "入荷予定数"
     type: average
-    sql: report_summary.scheduled_qnantity ;;
+    sql: report_summary.scheduled_quantity ;;
   }
 
   measure: total_quantity {
