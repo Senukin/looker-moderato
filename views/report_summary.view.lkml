@@ -32,7 +32,7 @@ view: report_summary {
   dimension: option_name {
     label: "オプション名"
     type: string
-    sql: ${TABLE}.option_name ;;
+    sql: ${TABLE}.option_title ;;
   }
 
   dimension: code {
