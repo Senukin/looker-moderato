@@ -29,6 +29,12 @@ view: report_summary {
     sql: ${TABLE}.article_name ;;
   }
 
+  dimension: option_name {
+    label: "オプション名"
+    type: string
+    sql: ${TABLE}.option_name ;;
+  }
+
   dimension: code {
     label: "商品コード"
     type: string
