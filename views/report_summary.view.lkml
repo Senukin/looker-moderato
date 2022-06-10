@@ -169,6 +169,13 @@ view: report_summary {
     sql: ${TABLE}.expected_landing_percent ;;
   }
 
+  measure: expected_landing_percent_by_sku {
+    label: "SKUごとの着地見込み率"
+    type: sum
+    value_format: "0.00"
+    sql: ${TABLE}.expected_landing_percent ;;
+  }
+
   measure: compared_to_the_previous_week {
     label: "対先週伸び"
     value_format: "0.00"
