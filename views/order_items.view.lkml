@@ -240,7 +240,7 @@ view: order_items {
   measure: sum_refund_amount_with_tax {
     label: "返金額(税込)"
     type: sum
-    sql: ${TABLE}.refund_amount_with_tax ;;
+    sql: ${TABLE}.refund_price_with_tax ;;
   }
 
   measure: sum_quantity {
