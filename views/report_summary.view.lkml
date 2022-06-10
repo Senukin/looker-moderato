@@ -156,6 +156,12 @@ view: report_summary {
     sql: ${TABLE}.budget_value ;;
   }
 
+  measure: budget_appointment {
+    label: "SKUごとの按分された予算"
+    type: average
+    sql: ${TABLE}.budget_value_apportionment ;;
+  }
+
   measure: expected_landing_percent {
     label: "着地見込み率"
     type: sum
