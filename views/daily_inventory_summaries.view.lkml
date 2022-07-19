@@ -64,6 +64,13 @@ view: daily_inventory_summaries {
     sql: ${TABLE}.model_number ;;
   }
 
+  dimension: drill_model_number {
+    label: "型番"
+    drill_fields: [date_date, name, sku_code, m_available, m_blocked, m_received]
+    sql: ${TABLE}.model_number ;;
+  }
+
+
   dimension: month {
     label: "年月"
     type: string
