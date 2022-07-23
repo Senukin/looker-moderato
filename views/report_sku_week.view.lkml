@@ -36,12 +36,10 @@ view: report_sku_week {
   }
 
   dimension: code {
-    label: "商品コード"
+    label: "SKU"
     type: string
-    sql: ${TABLE}.code ;;
+    sql: ${TABLE}.sku ;;
   }
-
-
 
   measure: expected_remain_week_number {
     label: "残見込週数"
@@ -49,10 +47,10 @@ view: report_sku_week {
     sql: ${TABLE}.expected_remain_week_number ;;
   }
 
-  dimension: identification_code {
-    label: "バーコード"
-    type: string
-    sql: ${TABLE}.identification_code ;;
+  measure: stock_cnt {
+    label: "期間中の平均在庫数"
+    type: average
+    sql: ${TABLE}.stock_cnt ;;
   }
 
   measure: inventory_turnover {
@@ -120,18 +118,6 @@ view: report_sku_week {
   #   sql: ${TABLE}.scheduled_date ;;
   # }
 
-  measure: scheduled {
-    label: "入荷予定日"
-    type: date
-    sql: min(${TABLE}.scheduled_date) ;;
-  }
-
-  measure: scheduled_quantity {
-    label: "入荷予定数"
-    type: average
-    sql: report_summary.scheduled_quantity ;;
-  }
-
   measure: total_quantity {
     label: "販売数"
     type: sum
@@ -150,30 +136,17 @@ view: report_sku_week {
     sql: ${TABLE}.total_sales ;;
   }
 
-  measure: budget {
-    label: "予算"
-    type: average
-    sql: ${TABLE}.budget_value ;;
-  }
-
   measure: budget_appointment {
     label: "SKU別予算"
     type: average
-    sql: ${TABLE}.budget_value_apportionment ;;
+    sql: ${TABLE}.sum_budget_value_apportionment_per_week ;;
   }
 
   measure: expected_landing_percent {
     label: "着地見込率"
     type: sum
     value_format: "0.00"
-    sql: ${TABLE}.expected_landing_percent ;;
-  }
-
-  measure: expected_landing_percent_by_sku {
-    label: "SKU別着地見込率"
-    type: sum
-    value_format: "0.00"
-    sql: ${TABLE}.expected_landing_percent_by_sku ;;
+    sql: ${TABLE}.probability_rate_per_week ;;
   }
 
   measure: compared_to_the_previous_week {
@@ -183,6 +156,23 @@ view: report_sku_week {
     sql: ${TABLE}.compared_to_the_previous_week ;;
   }
 
+  measure: current_stock_count {
+    label: "現在庫"
+    type: average
+    sql: ${TABLE}.current_stock_count ;;
+  }
+
+  measure: scheduled_date {
+    label: "入荷予定日"
+    type: date
+    sql: min(${TABLE}.scheduled_date) ;;
+  }
+
+  measure: scheduled_quantity {
+    label: "入荷予定数"
+    type: average
+    sql: report_summary.scheduled_instock_quantity ;;
+  }
 
   measure: count {
     type: count
