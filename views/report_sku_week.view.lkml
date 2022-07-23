@@ -143,7 +143,7 @@ view: report_sku_week {
   measure: scheduled_quantity {
     label: "入荷予定数"
     type: average
-    sql: report_summary.scheduled_instock_quantity ;;
+    sql: ${TABLE}.scheduled_instock_quantity ;;
   }
 
 }
