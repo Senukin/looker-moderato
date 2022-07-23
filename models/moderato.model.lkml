@@ -10,10 +10,14 @@ explore: inventory_summaries {
   label: "在庫"
 }
 
-
 explore: report_summary
 {
   label: "在庫サマリー"
+}
+
+explore: report_sku_week
+{
+  label: "MDレポート(SKU,週別)"
 }
 
 explore: report_summary_group_by_categories
