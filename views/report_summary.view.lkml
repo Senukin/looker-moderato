@@ -44,7 +44,7 @@ view: report_summary {
 
 
   measure: expected_remain_week_number {
-    label: "残見込み週数"
+    label: "残見込週数"
     type: average
     sql: ${TABLE}.expected_remain_week_number ;;
   }
@@ -75,13 +75,13 @@ view: report_summary {
   }
 
   measure: predict_quantity_per_month {
-    label: "1ヶ月当たりの見込み数量"
+    label: "月次見込数量"
     type: sum
     sql: ${TABLE}.predict_quantity_per_month ;;
   }
 
   measure: predict_sales_per_month {
-    label: "一ヶ月当たりの見込み売上"
+    label: "月次見込売上"
     type: sum
     sql: ${TABLE}.predict_sales_per_month ;;
   }
@@ -99,7 +99,7 @@ view: report_summary {
   }
 
   measure: quantity_per_day {
-    label: "一日当たり販売数"
+    label: "日次販売数"
     value_format: "0.00"
     type: sum
     sql: ${TABLE}.quantity_per_day ;;
@@ -157,20 +157,20 @@ view: report_summary {
   }
 
   measure: budget_appointment {
-    label: "SKUごとの按分された予算"
+    label: "SKU別予算"
     type: average
     sql: ${TABLE}.budget_value_apportionment ;;
   }
 
   measure: expected_landing_percent {
-    label: "着地見込み率"
+    label: "着地見込率"
     type: sum
     value_format: "0.00"
     sql: ${TABLE}.expected_landing_percent ;;
   }
 
   measure: expected_landing_percent_by_sku {
-    label: "SKUごとの着地見込み率"
+    label: "SKU別着地見込率"
     type: sum
     value_format: "0.00"
     sql: ${TABLE}.expected_landing_percent_by_sku ;;
