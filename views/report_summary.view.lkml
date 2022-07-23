@@ -20,7 +20,7 @@ view: report_summary {
   dimension: _week_str {
     label: "開始日"
     type: string
-    sql: FORMAT_DATE("%x",  ${TABLE}._week) ;;
+    sql: FORMAT_DATE("%y/%m/%d",  ${TABLE}._week) ;;
   }
 
   dimension: article_name {
