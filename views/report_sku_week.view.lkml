@@ -2,6 +2,12 @@ view: report_sku_week {
   sql_table_name: `cloudfit-saas-prd.dataform.report_sku_week`
     ;;
 
+  dimension: code {
+    label: "SKU"
+    type: string
+    sql: ${TABLE}.sku ;;
+  }
+
   dimension_group: _week {
     type: time
     timeframes: [
@@ -23,28 +29,18 @@ view: report_sku_week {
     sql: FORMAT_DATE("%y/%m/%d",  ${TABLE}._week) ;;
   }
 
-  dimension: article_name {
-    label: "商品名"
-    type: string
-    sql: ${TABLE}.article_name ;;
+
+  measure: total_quantity {
+    label: "販売数"
+    type: sum
+    sql: ${TABLE}.total_quantity ;;
   }
 
-  dimension: option_name {
-    label: "オプション名"
-    type: string
-    sql: ${TABLE}.option_title ;;
-  }
-
-  dimension: code {
-    label: "SKU"
-    type: string
-    sql: ${TABLE}.sku ;;
-  }
-
-  measure: expected_remain_week_number {
-    label: "残見込週数"
-    type: average
-    sql: ${TABLE}.expected_remain_week_number ;;
+  measure: quantity_per_day {
+    label: "日次販売数"
+    value_format: "0.00"
+    type: sum
+    sql: ${TABLE}.quantity_per_day ;;
   }
 
   measure: stock_cnt {
@@ -53,23 +49,16 @@ view: report_sku_week {
     sql: ${TABLE}.stock_cnt ;;
   }
 
-  measure: inventory_turnover {
-    label: "在庫回転率"
-    type: average
-    value_format: "0.00"
-    sql: ${TABLE}.inventory_turnover ;;
-  }
-
   measure: price {
     label: "価格"
     type: average
     sql: ${TABLE}.price ;;
   }
 
-  measure: latest_available {
-    label: "現在庫"
+  measure: total_sales {
+    label: "売上"
     type: sum
-    sql: ${TABLE}.latest_available ;;
+    sql: ${TABLE}.total_sales ;;
   }
 
   measure: predict_quantity_per_month {
@@ -84,24 +73,44 @@ view: report_sku_week {
     sql: ${TABLE}.predict_sales_per_month ;;
   }
 
-  dimension: product_type {
-    label: "カテゴリー"
-    type: string
-    sql: ${TABLE}.product_type ;;
-  }
-
-  dimension: model_number {
-    label: "型番"
-    type: string
-    sql: ${TABLE}.model_number ;;
-  }
-
-  measure: quantity_per_day {
-    label: "日次販売数"
+  measure: inventory_turnover {
+    label: "在庫回転率"
+    type: average
     value_format: "0.00"
-    type: sum
-    sql: ${TABLE}.quantity_per_day ;;
+    sql: ${TABLE}.inventory_turnover ;;
   }
+
+  measure: budget_appointment {
+    label: "SKU別予算"
+    type: average
+    sql: ${TABLE}.sum_budget_value_apportionment_per_week ;;
+  }
+
+  measure: expected_landing_percent {
+    label: "着地見込率"
+    type: sum
+    value_format: "0.00"
+    sql: ${TABLE}.probability_rate_per_week ;;
+  }
+
+  measure: before_week_total_quantity {
+    label: "前週販売数"
+    type: sum
+    sql: ${TABLE}.before_week_total_quantity ;;
+  }
+
+  measure: compared_to_the_previous_week {
+    label: "対先週伸び"
+    value_format: "0.00"
+    type: average
+    sql: ${TABLE}.compared_to_the_previous_week ;;
+  }
+
+  # measure: expected_remain_week_number {
+  #   label: "残見込週数"
+  #   type: average
+  #   sql: ${TABLE}.expected_remain_week_number ;;
+  # }
 
   # dimension_group: scheduled {
   #   label: "入荷予定日"
@@ -118,43 +127,6 @@ view: report_sku_week {
   #   sql: ${TABLE}.scheduled_date ;;
   # }
 
-  measure: total_quantity {
-    label: "販売数"
-    type: sum
-    sql: ${TABLE}.total_quantity ;;
-  }
-
-  measure: before_week_total_quantity {
-    label: "前週販売数"
-    type: sum
-    sql: ${TABLE}.before_week_total_quantity ;;
-  }
-
-  measure: total_sales {
-    label: "売上"
-    type: sum
-    sql: ${TABLE}.total_sales ;;
-  }
-
-  measure: budget_appointment {
-    label: "SKU別予算"
-    type: average
-    sql: ${TABLE}.sum_budget_value_apportionment_per_week ;;
-  }
-
-  measure: expected_landing_percent {
-    label: "着地見込率"
-    type: sum
-    value_format: "0.00"
-    sql: ${TABLE}.probability_rate_per_week ;;
-  }
-
-  measure: compared_to_the_previous_week {
-    label: "対先週伸び"
-    value_format: "0.00"
-    type: average
-    sql: ${TABLE}.compared_to_the_previous_week ;;
-  }
 
   measure: current_stock_count {
     label: "現在庫"
@@ -174,8 +146,4 @@ view: report_sku_week {
     sql: report_summary.scheduled_instock_quantity ;;
   }
 
-  measure: count {
-    type: count
-    drill_fields: [article_name]
-  }
 }
