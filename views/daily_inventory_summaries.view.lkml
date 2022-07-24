@@ -61,11 +61,20 @@ view: daily_inventory_summaries {
   dimension: model_number {
     label: "型番"
     type: string
-    sql: ${TABLE}.model_number ;;
-  }
+  　link: {
+      label: "SKU別へ"
+      url: "https://cloudfit-metrics.com/reports/31?reportParams={{daily_inventory_summaries.param1._value}}"
+      }
+    sql:  ${TABLE}.model_number ;;
+    }
+
+    dimension: param1 {
+      type: string
+      sql: REPLACE(REPLACE(TO_BASE64(CAST( `cloudfit-saas-prd.udf_cloudfit_metrics.urlEncode`(CONCAT("型番=",  ${TABLE}.model_number)) AS BYTES)), '+', '-'), '/', '_');;
+    }
 
   dimension: drill_model_number {
-    label: "型番"
+    label: "型番（ドリル）"
     drill_fields: [date_date, name, sku_code, m_available, m_blocked, m_received]
     sql: ${TABLE}.model_number ;;
   }
