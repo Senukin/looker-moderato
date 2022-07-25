@@ -8,6 +8,36 @@ view: report_sku_week {
     sql: ${TABLE}.sku ;;
   }
 
+  dimension: product_name {
+    label: "商品名"
+    type: string
+    sql: ${TABLE}.product_name ;;
+  }
+
+  dimension: category {
+    label: "カテゴリ"
+    type: string
+    sql: ${TABLE}.category ;;
+  }
+
+  dimension: series_category {
+    label: "サブカテゴリ"
+    type: string
+    sql: ${TABLE}.series_category ;;
+  }
+
+  dimension: product_positioning_updated {
+    label: "product_positioning_updated"
+    type: string
+    sql: ${TABLE}.product_positioning_updated ;;
+  }
+
+  dimension: model_number {
+    label: "型番"
+    type: string
+    sql: ${TABLE}.model_number ;;
+  }
+
   dimension_group: _week {
     type: time
     timeframes: [
@@ -44,7 +74,7 @@ view: report_sku_week {
   }
 
   measure: stock_cnt {
-    label: "期間中の平均在庫数"
+    label: "平均在庫数"
     type: average
     sql: ${TABLE}.stock_cnt ;;
   }
@@ -62,14 +92,16 @@ view: report_sku_week {
   }
 
   measure: predict_quantity_per_month {
-    label: "月次見込数量"
+    label: "1ヶ月当たりの見込み数量"
     type: sum
+    value_format: "0"
     sql: ${TABLE}.predict_quantity_per_month ;;
   }
 
   measure: predict_sales_per_month {
-    label: "月次見込売上"
+    label: "1ヶ月当たりの見込み売上"
     type: sum
+    value_format: "0"
     sql: ${TABLE}.predict_sales_per_month ;;
   }
 
@@ -83,11 +115,12 @@ view: report_sku_week {
   measure: budget_appointment {
     label: "SKU別予算"
     type: average
+    value_format: "0"
     sql: ${TABLE}.sum_budget_value_apportionment_per_week ;;
   }
 
   measure: expected_landing_percent {
-    label: "着地見込率"
+    label: "着地見込み率"
     type: sum
     value_format: "0.00"
     sql: ${TABLE}.probability_rate_per_week ;;
