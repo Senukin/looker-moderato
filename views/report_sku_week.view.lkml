@@ -76,6 +76,7 @@ view: report_sku_week {
   measure: stock_cnt {
     label: "平均在庫数"
     type: average
+    value_format: "0"
     sql: ${TABLE}.stock_cnt ;;
   }
 
