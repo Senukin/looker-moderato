@@ -20,6 +20,12 @@ explore: report_sku_week
   label: "MDレポート(SKU,週別)"
 }
 
+explore: report_model_number_week
+{
+  label: "MDレポート(型番,週別)"
+}
+
+
 explore: report_summary_group_by_categories
 {
   label: "カテゴリごとに集計した在庫サマリー"
