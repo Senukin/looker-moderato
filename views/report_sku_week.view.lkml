@@ -21,13 +21,13 @@ view: report_sku_week {
   }
 
   dimension: series_category {
-    label: "サブカテゴリ"
+    label: "シリーズ"
     type: string
     sql: ${TABLE}.series_category ;;
   }
 
   dimension: product_positioning_updated {
-    label: "product_positioning_updated"
+    label: "商品位置づけ"
     type: string
     sql: ${TABLE}.product_positioning_updated ;;
   }
