@@ -44,3 +44,7 @@ explore: daily_inventory_summaries {
 explore: daily_inventory_summaries_metrics {
   label: "日次在庫指標"
 }
+
+explore: daily_inventory_summary_old {
+  label: "日次在庫_old"
+}
