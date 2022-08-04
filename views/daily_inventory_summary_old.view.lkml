@@ -63,7 +63,7 @@ view: daily_inventory_summary_old {
     type: string
   　link: {
       label: "日次在庫一覧(SKU別)へ"
-      url: "https://cloudfit-metrics.com/reports/31?reportParams={{daily_inventory_summaries.param1._value}}"
+      url: "https://cloudfit-metrics.com/reports/31?reportParams={{daily_inventory_summary.param1._value}}"
       }
     sql:  ${TABLE}.model_number ;;
     }
