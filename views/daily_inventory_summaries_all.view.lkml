@@ -33,7 +33,7 @@ view: daily_inventory_summaries_all {
        available,
        blocked,
        received
-      FROM ${daily_inventory_summaries_temp.SQL_TABLE_NAME}
+      FROM ${daily_inventory_summary_old_temp.SQL_TABLE_NAME}
     ;;
     }
 
