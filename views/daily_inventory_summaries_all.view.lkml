@@ -84,7 +84,7 @@ view: daily_inventory_summaries_all {
 
   dimension: param1 {
     type: string
-    sql: REPLACE(REPLACE(TO_BASE64(CAST( `cloudfit-saas-prd.udf_cloudfit_metrics.urlEncode`(CONCAT("型番=",  ${TABLE}.model_number)) AS BYTES)), '+', '-'), '/', '_');;
+    sql: REPLACE(REPLACE(TO_BASE64(CAST( `cloudfit-saas-prd.udf_cloudfit_metrics.urlEncode`(CONCAT("型番=",  model_number)) AS BYTES)), '+', '-'), '/', '_');;
   }
 
   dimension: month {
