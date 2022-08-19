@@ -37,11 +37,26 @@ view: daily_inventory_summaries_all {
     ;;
     }
 
+  dimension: model_number {
+    label: "型番"
+    type: string
+    link: {
+      label: "日次在庫一覧(SKU別)へ"
+      url: "https://cloudfit-metrics.com/reports/31?reportParams={{daily_inventory_summaries_all.param1._value}}"
+    }
+    sql:  ${TABLE}.model_number ;;
+  }
+
+  dimension: param1 {
+    type: string
+    sql: REPLACE(REPLACE(TO_BASE64(CAST( `cloudfit-saas-prd.udf_cloudfit_metrics.urlEncode`(CONCAT("型番=",  ${TABLE}.model_number)) AS BYTES)), '+', '-'), '/', '_');;
+  }
+
+
   dimension: id {
     label: "ID"
     type: string
   }
-
 
   dimension_group: created_at {
     label: "作成日時"
@@ -72,11 +87,6 @@ view: daily_inventory_summaries_all {
     datatype: date
   }
 
-
-  dimension: model_number {
-    label: "型番"
-    type: string
-  }
 
   dimension: month {
     label: "年月"
