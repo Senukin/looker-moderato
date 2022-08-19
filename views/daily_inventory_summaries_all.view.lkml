@@ -76,15 +76,6 @@ view: daily_inventory_summaries_all {
   dimension: model_number {
     label: "型番"
     type: string
-    link: {
-      label: "日次在庫一覧(SKU別)へ"
-      url: "https://cloudfit-metrics.com/reports/31?reportParams={{daily_inventory_summaries.param1._value}}"
-    }
-  }
-
-  dimension: param1 {
-    type: string
-    sql: REPLACE(REPLACE(TO_BASE64(CAST( `cloudfit-saas-prd.udf_cloudfit_metrics.urlEncode`(CONCAT("型番=",  model_number)) AS BYTES)), '+', '-'), '/', '_');;
   }
 
   dimension: month {
