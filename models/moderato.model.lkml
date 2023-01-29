@@ -52,3 +52,11 @@ explore: daily_inventory_summary_old {
 explore: daily_inventory_summaries_all {
   label: "日次在庫_all"
 }
+
+explore: test_sheet {
+  label: "test_sheet"
+}
+
+explore: test_sheet_table {
+  label: "test_sheet_table"
+}
